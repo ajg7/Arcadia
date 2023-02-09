@@ -1,10 +1,9 @@
 import React from "react";
+import Odyssey from "./Odyssey.tsx";
 
 const App = (): JSX.Element => {
   return (
-    <div>
-      <h1>Hello World!!</h1>
-    </div>
+    <Odyssey />
   );
 };
 
