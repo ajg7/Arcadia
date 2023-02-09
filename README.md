@@ -1,7 +1,9 @@
-## Arcadia
+# Arcadia
+
 An app that allows users to create a learning journey to fit their curriculum
 
-### Technologies
+## Technologies
+
 1. React/TypeScript
 2. Redux
 3. Jest/RTL
