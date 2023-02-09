@@ -1,0 +1,19 @@
+{
+  "name": "arcadia",
+  "version": "1.0.0",
+  "description": "an app that allows users to create their own learning odyssey",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajg7/Arcadia.git"
+  },
+  "author": "AJ Gebara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajg7/Arcadia/issues"
+  },
+  "homepage": "https://github.com/ajg7/Arcadia#readme"
+}
