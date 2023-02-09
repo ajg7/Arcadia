@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
-    "test": "jest"
+    "test": "jest",
   },
   "husky": {
     "hooks": {
