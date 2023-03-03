@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Odyssey = (): JSX.Element => {
+  /*
+    Endgoal: We need to create a system where you can create an Odyssey -> Adventures -> Battle
+    1. Add an Odyssey
+  */
+
+  const [odysseyTitle, setOdysseyTitle] = useState<string>("");
+  const [isOdysseyTextBoxActive, setIsOdysseyTextBoxActive] =
+    useState<boolean>(false);
+  const [isButtonActive, setIsButtonActive] = useState<boolean>(true);
+  const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsOdysseyTextBoxActive(false);
+    setIsButtonActive(false);
+    setIsFormSubmitted(true);
+  };
+
   return (
     <div>
-      <h1>Book</h1>
-      <h2>Adventure 1</h2>
-      <h2>Adventure 2</h2>
-      <h2>Adventure 3</h2>
-      <h3>Battle!</h3>
+      {isOdysseyTextBoxActive && (
+        <form onSubmit={submitHandler}>
+          <input
+            type="text"
+            onChange={({ target: { value } }) => setOdysseyTitle(value)}
+          />
+        </form>
+      )}
+      {isButtonActive && (
+        <button
+          onClick={() => setIsOdysseyTextBoxActive(!isOdysseyTextBoxActive)}
+        >
+          {"Add an Odyssey"}
+        </button>
+      )}
+      {isFormSubmitted && <h1>{odysseyTitle}</h1>}
     </div>
   );
 };
