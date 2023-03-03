@@ -11,11 +11,20 @@ const Odyssey = (): JSX.Element => {
     useState<boolean>(false);
   const [isButtonActive, setIsButtonActive] = useState<boolean>(true);
   const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
+
   const [isAdventureCreateActive, setIsAdventureCreateActive] =
     useState<boolean>(false);
   const [adventures, setAdventures] = useState<Array<string>>([]);
   const [adventureTitle, setAdventureTitle] = useState<string>("");
   const [isAdventureTextBoxActive, setIsAdventureTextBoxActive] =
+    useState<boolean>(false);
+
+  const [isBattleCreationActive, setIsBattleCreationActive] =
+    useState<boolean>(false);
+  const [battleTitle, setBattleTitle] = useState<string>("");
+  const [isBattleTextBoxActive, setIsBattleTextBoxActive] =
+    useState<boolean>(false);
+  const [isBattleFormSubmitted, setIsBattleFormSubmitted] =
     useState<boolean>(false);
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,6 +40,14 @@ const Odyssey = (): JSX.Element => {
     setIsAdventureCreateActive(true);
     setIsAdventureTextBoxActive(false);
     setAdventures((prevState) => [...prevState, adventureTitle]);
+    if (adventures.length >= 2 && !isBattleFormSubmitted) setIsBattleCreationActive(true);
+  };
+
+  const submitBattleHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsBattleCreationActive(false);
+    setIsBattleTextBoxActive(false);
+    setIsBattleFormSubmitted(true);
   };
 
   return (
@@ -73,6 +90,20 @@ const Odyssey = (): JSX.Element => {
           </div>
         );
       })}
+      {isBattleTextBoxActive && (
+        <form onSubmit={submitBattleHandler}>
+          <input
+            type="text"
+            onChange={({ target: { value } }) => setBattleTitle(value)}
+          />
+        </form>
+      )}
+      {isBattleCreationActive && (
+        <button onClick={() => setIsBattleTextBoxActive(true)}>
+          {"Add a Battle!"}
+        </button>
+      )}
+      {isBattleFormSubmitted && <h5>{battleTitle}</h5>}
     </div>
   );
 };
