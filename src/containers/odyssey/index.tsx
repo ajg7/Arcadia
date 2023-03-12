@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import Adventure from "../../components/adventures";
 
 const Odyssey = (): JSX.Element => {
   /*
-    Endgoal: We need to create a system where you can create an Odyssey -> Adventures -> Battle
-    1. Add adventures
+    Endgoal: We need to separate into Odyssey, Adventures, & Battles
   */
 
   const [odysseyTitle, setOdysseyTitle] = useState<string>("");
@@ -40,7 +40,8 @@ const Odyssey = (): JSX.Element => {
     setIsAdventureCreateActive(true);
     setIsAdventureTextBoxActive(false);
     setAdventures((prevState) => [...prevState, adventureTitle]);
-    if (adventures.length >= 2 && !isBattleFormSubmitted) setIsBattleCreationActive(true);
+    if (adventures.length >= 2 && !isBattleFormSubmitted)
+      setIsBattleCreationActive(true);
   };
 
   const submitBattleHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -84,11 +85,7 @@ const Odyssey = (): JSX.Element => {
         </button>
       )}
       {adventures.map((adventure) => {
-        return (
-          <div>
-            <h3>{adventure}</h3>
-          </div>
-        );
+        return <Adventure adventure={adventure} />;
       })}
       {isBattleTextBoxActive && (
         <form onSubmit={submitBattleHandler}>

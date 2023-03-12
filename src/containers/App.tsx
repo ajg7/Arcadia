@@ -1,5 +1,5 @@
 import React from "react";
-import Odyssey from "./Odyssey.tsx";
+import Odyssey from "./odyssey/index";
 
 const App = (): JSX.Element => {
   return (
