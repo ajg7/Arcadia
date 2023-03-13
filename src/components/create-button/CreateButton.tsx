@@ -5,7 +5,7 @@ interface CreateButtonProps {
   isOdysseyNamed?: boolean;
 }
 
-enum Options {
+enum CreateOptions {
   Odyssey = "odyssey",
   Adventure = "adventure",
   Battle = "battle",
@@ -22,10 +22,10 @@ const CreateButton: FC<CreateButtonProps> = ({ isOdysseyNamed }) => {
       {isSelectionActive && (
         <ul>
           {!isOdysseyNamed && (
-            <li value={Options.Odyssey}>Odyssey</li>
+            <li value={CreateOptions.Odyssey}>Odyssey</li>
           )}
-          <li value={Options.Adventure}>Adventure</li>
-          <li value={Options.Battle}>Battle</li>
+          <li value={CreateOptions.Adventure}>Adventure</li>
+          <li value={CreateOptions.Battle}>Battle</li>
         </ul>
       )}
     </CreateButtonWrapper>
